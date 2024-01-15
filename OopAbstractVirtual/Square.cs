@@ -1,21 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using System.Drawing;
 
 namespace OopAbstractVirtual
 {
-    internal class Square : Shape
+    public class Square : Shape
     {
-        public Square(int width) 
+        public Square(Point topLeft, int width)
+            : base(
+                  nameof(Square),
+                  topLeft,
+                  new Point(topLeft.X + width, topLeft.Y),
+                  new Point(topLeft.X + width, topLeft.Y + width),
+                  new Point(topLeft.X, topLeft.Y + width))
         {
             Width = width;
         }
+
         public int Width { get; }
+
         public override double GetArea()
         {
-            throw new NotImplementedException();
+            return Width * Width;
         }
     }
 }
